@@ -1,0 +1,23 @@
+<div class="login-page container-fluid">
+    <h3 *ngIf="auth_flag"> <i> please enter your login account information </i></h3> 
+    <h3 *ngIf="!auth_flag"> <i> please enter your new account information </i></h3> 
+    <br>
+    <div class="form">
+      <form class="register-form" *ngIf="!auth_flag">
+        <input type="text" placeholder="name" required/>
+        <input type="password" placeholder="password" required/>
+        <input type="text" placeholder="email address" required/>
+        <input type="text" placeholder="phone number" required/>
+        <input type="text" placeholder="address" required/>
+        <button>create</button>
+        <p class="message">Already registered? <a routerLink="/auth" (click)="auth_flag=!auth_flag">Sign In</a></p>
+      </form>
+      <form class="login-form" *ngIf="auth_flag">
+        <input type="text" placeholder="username" required/>
+        <input type="password" placeholder="password" required/>
+        <button>login</button>
+        <p class="message">Not registered? <a routerLink="/auth" (click)="auth_flag=!auth_flag" >Create an account</a></p>
+      </form>
+    </div> 
+  
+  </div>

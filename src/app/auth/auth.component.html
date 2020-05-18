@@ -15,8 +15,15 @@
       </form>
 
       <form class="login-form" *ngIf="auth_flag" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm,auth_flag)">
-        <input type="text" formControlName="email" placeholder="email" required/>
+        <input type="text" id="email" formControlName="email" placeholder="email" required/>
+        <div class="alert alert-light" *ngIf="email.touched && email.invalid">
+          <div class="badge badge-primary" *ngIf="email?.errors['required']"> empty email </div>
+          <div class="badge badge-info" *ngIf="email?.errors['pattern']"> invalid email </div>
+        </div>
         <input type="password" formControlName="password"  placeholder="password" required/>
+        <div class="alert alert-light" *ngIf="password.touched && password.invalid">
+          <div class="badge badge-primary" *ngIf="password?.errors['required']"> empty passoword </div>
+        </div>
         <button  type="submit" [disabled]="!loginForm.valid">login</button>
         <p class="message">Not registered? <a routerLink="/auth" (click)="auth_flag=!auth_flag" >Create an account</a></p>
       </form>
